@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
+// import { useDarkModeManager } from '../../contexts/LocalStorage'
 
 const rotate = keyframes`
   0% { transform: scale(1); }
@@ -30,11 +30,12 @@ const Loader = styled.div`
 `
 
 const LocalLoader = ({ fill }) => {
-  const [darkMode] = useDarkModeManager()
+  // const [darkMode] = useDarkModeManager()
 
   return (
     <Loader fill={fill}>
-      <img src={require(darkMode ? '../../assets/logo_white.svg' : '../../assets/logo.svg')} alt="loading-icon" />
+      {/* <img src={require(darkMode ? '../../assets/logo_white.svg' : '../../assets/logo.svg')} alt="loading-icon" /> */}
+      <img src={require('../../assets/logo_lua.png')} alt="loading-icon" />
     </Loader>
   )
 }

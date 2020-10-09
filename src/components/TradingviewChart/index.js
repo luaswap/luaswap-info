@@ -54,7 +54,10 @@ const TradingViewChart = ({
   // parese the data and format for tardingview consumption
   const formattedData = data?.map(entry => {
     return {
-      time: dayjs.unix(entry.date).utc().format('YYYY-MM-DD'),
+      time: dayjs
+        .unix(entry.date)
+        .utc()
+        .format('YYYY-MM-DD'),
       value: parseFloat(entry[field])
     }
   })
@@ -129,7 +132,7 @@ const TradingViewChart = ({
       var series =
         type === CHART_TYPES.BAR
           ? chart.addHistogramSeries({
-              color: '#ff007a',
+              color: '#fabb46',
               priceFormat: {
                 type: 'volume'
               },
@@ -137,13 +140,13 @@ const TradingViewChart = ({
                 top: 0.32,
                 bottom: 0
               },
-              lineColor: '#ff007a',
+              lineColor: '#fabb46',
               lineWidth: 3
             })
           : chart.addAreaSeries({
-              topColor: '#ff007a',
-              bottomColor: 'rgba(255, 0, 122, 0)',
-              lineColor: '#ff007a',
+              topColor: 'rgba(250, 187, 70, 0.56)',
+              bottomColor: 'rgba(250, 187, 70, 0.04)',
+              lineColor: '#fabb46',
               lineWidth: 3
             })
 

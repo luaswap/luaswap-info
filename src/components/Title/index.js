@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { Flex } from 'rebass'
 import Link from '../Link'
 import { RowFixed } from '../Row'
-import Logo from '../../assets/logo_white.svg'
-import Wordmark from '../../assets/wordmark_white.svg'
+import Logo from '../../assets/logo_lua.png'
+// import Wordmark from '../../assets/wordmark_white.svg'
 
 const TitleWrapper = styled.div`
   text-decoration: none;
@@ -25,6 +25,12 @@ const UniIcon = styled(Link)`
   }
 `
 
+const Wordmark = styled.span`
+  color: #fff;
+  font-size: 20px;
+  margin-left: 5px;
+`
+
 export default function Title() {
   const history = useHistory()
 
@@ -35,7 +41,8 @@ export default function Title() {
           <UniIcon id="link" onClick={() => history.push('/')}>
             <img width={'24px'} src={Logo} alt="logo" />
           </UniIcon>
-          <img width={'84px'} style={{ marginLeft: '8px', marginTop: '0px' }} src={Wordmark} alt="logo" />
+          <Wordmark>LuaSwap</Wordmark>
+          {/* <img width={'84px'} style={{ marginLeft: '8px', marginTop: '0px' }} src={Wordmark} alt="logo" /> */}
         </RowFixed>
       </Flex>
     </TitleWrapper>
