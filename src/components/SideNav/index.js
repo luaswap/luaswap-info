@@ -165,7 +165,7 @@ function SideNav({ history }) {
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
               <Link href="https://luaswap.org" target="_blank">
-                Luaswap.org
+                LuaSwap.org
               </Link>
             </HeaderText>
             {/* <HeaderText>
