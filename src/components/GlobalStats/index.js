@@ -7,6 +7,7 @@ import { formattedNum, localNumber } from '../../utils'
 
 import UniPrice from '../UniPrice'
 import { TYPE } from '../../Theme'
+import { FEE_SWAP } from '../../constants'
 
 const Header = styled.div`
   width: 100%;
@@ -30,7 +31,7 @@ export default function GlobalStats() {
   const { oneDayVolumeUSD, oneDayTxns, pairCount } = useGlobalData()
   const [ethPrice] = useEthPrice()
   const formattedEthPrice = ethPrice ? formattedNum(ethPrice, true) : '-'
-  const oneDayFees = oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD * 0.003, true) : ''
+  const oneDayFees = oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD * FEE_SWAP, true) : ''
 
   return (
     <Header>

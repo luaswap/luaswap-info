@@ -30,6 +30,7 @@ import { usePathDismissed, useSavedPairs } from '../contexts/LocalStorage'
 import { Bookmark, PlusCircle } from 'react-feather'
 import FormattedName from '../components/FormattedName'
 import { useListedTokens } from '../contexts/Application'
+import { FEE_SWAP } from '../constants'
 
 const DashboardWrapper = styled.div`
   width: 100%;
@@ -162,8 +163,8 @@ function PairPage({ pairAddress, history }) {
   const fees =
     oneDayVolumeUSD || oneDayVolumeUSD === 0
       ? usingUtVolume
-        ? formattedNum(oneDayVolumeUntracked * 0.003, true)
-        : formattedNum(oneDayVolumeUSD * 0.003, true)
+        ? formattedNum(oneDayVolumeUntracked * FEE_SWAP, true)
+        : formattedNum(oneDayVolumeUSD * FEE_SWAP, true)
       : '-'
 
   // token data for usd
