@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { AutoColumn } from '../Column'
 import Title from '../Title'
@@ -12,6 +12,7 @@ import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
+import menu from '../../assets/menu.svg'
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
   padding: 0.5rem 0.5rem 0.5rem 0.75rem;
   position: sticky;
   top: 0px;
-  z-index: 9999;
+  z-index: 10000;
   box-sizing: border-box;
   /* background-color: #1b1c22; */
   background: linear-gradient(193.68deg, #1b1c22 0.68%, #000000 100.48%);
@@ -99,6 +100,78 @@ const PollingDot = styled.div`
   background-color: ${({ theme }) => theme.green1};
 `
 
+const MenuMobileButton = styled.span`
+  display: inline-block;
+  padding: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+  background: url(${menu}) no-repeat center center;
+`
+
+const MenuMobileWrapper = styled.div`
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 100%;
+  padding: 10px 30px 20px;
+  background: #000;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: ${props => props.hide && 'none'};
+`
+
+function MenuContent({ history }) {
+  return (
+    <>
+      <AutoColumn gap="1.25rem" style={{ marginTop: '1rem' }}>
+        <BasicLink to="/home">
+          <Option activeText={history.location.pathname === '/home' ?? undefined}>
+            <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
+            Overview
+          </Option>
+        </BasicLink>
+        <BasicLink to="/tokens">
+          <Option
+            activeText={
+              (history.location.pathname.split('/')[1] === 'tokens' ||
+                history.location.pathname.split('/')[1] === 'token') ??
+              undefined
+            }
+          >
+            <Disc size={20} style={{ marginRight: '.75rem' }} />
+            Tokens
+          </Option>
+        </BasicLink>
+        <BasicLink to="/pairs">
+          <Option
+            activeText={
+              (history.location.pathname.split('/')[1] === 'pairs' ||
+                history.location.pathname.split('/')[1] === 'pair') ??
+              undefined
+            }
+          >
+            <PieChart size={20} style={{ marginRight: '.75rem' }} />
+            Pairs
+          </Option>
+        </BasicLink>
+
+        <BasicLink to="/accounts">
+          <Option
+            activeText={
+              (history.location.pathname.split('/')[1] === 'accounts' ||
+                history.location.pathname.split('/')[1] === 'account') ??
+              undefined
+            }
+          >
+            <List size={20} style={{ marginRight: '.75rem' }} />
+            Accounts
+          </Option>
+        </BasicLink>
+      </AutoColumn>
+    </>
+  )
+}
+
 function SideNav({ history }) {
   const below1080 = useMedia('(max-width: 1080px)')
 
@@ -108,59 +181,39 @@ function SideNav({ history }) {
 
   const [isDark, toggleDarkMode] = useDarkModeManager()
 
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+  function toggleMobileMenu(status) {
+    setShowMobileMenu(status)
+  }
+
+  // refs to detect clicks outside modal
+  const menuMobileButtonRef = useRef()
+  const MenuMobileWrapperRef = useRef()
+
+  const handleClick = e => {
+    if (
+      !(MenuMobileWrapperRef.current && MenuMobileWrapperRef.current.contains(e.target)) &&
+      !(menuMobileButtonRef.current && menuMobileButtonRef.current.contains(e.target))
+    ) {
+      toggleMobileMenu(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  })
+
   return (
     <Wrapper isMobile={below1080}>
       {!below1080 ? (
         <DesktopWrapper>
           <AutoColumn gap="1rem" style={{ marginLeft: '.75rem', marginTop: '1.5rem' }}>
             <Title />
-            {!below1080 && (
-              <AutoColumn gap="1.25rem" style={{ marginTop: '1rem' }}>
-                <BasicLink to="/home">
-                  <Option activeText={history.location.pathname === '/home' ?? undefined}>
-                    <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
-                    Overview
-                  </Option>
-                </BasicLink>
-                <BasicLink to="/tokens">
-                  <Option
-                    activeText={
-                      (history.location.pathname.split('/')[1] === 'tokens' ||
-                        history.location.pathname.split('/')[1] === 'token') ??
-                      undefined
-                    }
-                  >
-                    <Disc size={20} style={{ marginRight: '.75rem' }} />
-                    Tokens
-                  </Option>
-                </BasicLink>
-                <BasicLink to="/pairs">
-                  <Option
-                    activeText={
-                      (history.location.pathname.split('/')[1] === 'pairs' ||
-                        history.location.pathname.split('/')[1] === 'pair') ??
-                      undefined
-                    }
-                  >
-                    <PieChart size={20} style={{ marginRight: '.75rem' }} />
-                    Pairs
-                  </Option>
-                </BasicLink>
-
-                <BasicLink to="/accounts">
-                  <Option
-                    activeText={
-                      (history.location.pathname.split('/')[1] === 'accounts' ||
-                        history.location.pathname.split('/')[1] === 'account') ??
-                      undefined
-                    }
-                  >
-                    <List size={20} style={{ marginRight: '.75rem' }} />
-                    Accounts
-                  </Option>
-                </BasicLink>
-              </AutoColumn>
-            )}
+            {!below1080 && <MenuContent history={history} />}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
@@ -204,6 +257,17 @@ function SideNav({ history }) {
       ) : (
         <MobileWrapper>
           <Title />
+          <MenuMobileButton
+            onClick={() => {
+              if (!showMobileMenu) toggleMobileMenu(true)
+            }}
+            ref={menuMobileButtonRef}
+          />
+          <MenuMobileWrapper hide={!showMobileMenu} ref={MenuMobileWrapperRef}>
+            <AutoColumn gap="1.25rem">
+              <MenuContent history={history} />
+            </AutoColumn>
+          </MenuMobileWrapper>
         </MobileWrapper>
       )}
     </Wrapper>
