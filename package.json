@@ -1,8 +1,8 @@
 {
-  "name": "uniswap-info",
+  "name": "luaswap-info",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://uniswap.info",
+  "homepage": "https://info.luaswap.org/",
   "dependencies": {
     "@popperjs/core": "^2.4.2",
     "@reach/portal": "^0.10.3",
