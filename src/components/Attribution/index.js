@@ -2,15 +2,15 @@ import React from 'react'
 
 const Attribution = () => (
   <p className="attribution">
-    <a href="https://github.com/Uniswap/uniswap-info" rel="noopener noreferrer" target="_blank">
+    <a href="https://github.com/tomochain/luaswap-info" rel="noopener noreferrer" target="_blank">
       Github
     </a>{' '}
     |{' '}
-    <a href="https://uniswap.io" rel="noopener noreferrer" target="_blank">
-      Uniswap
+    <a href="https://luaswap.org" rel="noopener noreferrer" target="_blank">
+      LuaSwap
     </a>{' '}
     |{' '}
-    <a href="https://gifer.com/en/1Atv" rel="noopener noreferrer" target="_blank">
+    <a href="#" rel="noopener noreferrer" target="_blank">
       GIF
     </a>
   </p>
