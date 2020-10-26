@@ -107,7 +107,7 @@ function GlobalPage() {
               </Panel>
             </Box>
           )}
-          {/* {!below800 && (
+          {!below800 && (
             <GridRow>
               <Panel style={{ height: '100%', minHeight: '300px' }}>
                 <GlobalChart display="liquidity" />
@@ -116,7 +116,7 @@ function GlobalPage() {
                 <GlobalChart display="volume" />
               </Panel>
             </GridRow>
-          )} */}
+          )}
           {below800 && (
             <AutoColumn style={{ marginTop: '6px' }} gap="24px">
               <Panel style={{ height: '100%', minHeight: '300px' }}>

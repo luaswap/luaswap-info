@@ -89,7 +89,7 @@ function App() {
       <AppWrapper>
         {latestBlock &&
         globalData &&
-        // Object.keys(globalData).length > 0 &&
+        Object.keys(globalData).length > 0 &&
         globalChartData &&
         Object.keys(globalChartData).length > 0 ? (
           <BrowserRouter>
