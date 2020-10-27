@@ -40,12 +40,12 @@ export default function GlobalStats() {
           {!below400 && (
             <TYPE.main
               mr={'1rem'}
-              onMouseEnter={() => {
-                setShowPriceCard(true)
-              }}
-              onMouseLeave={() => {
-                setShowPriceCard(false)
-              }}
+              // onMouseEnter={() => {
+              //   setShowPriceCard(true)
+              // }}
+              // onMouseLeave={() => {
+              //   setShowPriceCard(false)
+              // }}
               style={{ position: 'relative' }}
             >
               ETH Price: <Medium>{formattedEthPrice}</Medium>
