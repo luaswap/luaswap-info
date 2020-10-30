@@ -8,7 +8,7 @@ import { transparentize } from 'polished'
 import { TYPE } from '../../Theme'
 import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
-import Link from '../Link'
+import Link, { ButtonLink } from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
@@ -217,25 +217,15 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://luaswap.org" target="_blank">
-                LuaSwap.org
-              </Link>
-            </HeaderText>
-            {/* <HeaderText>
-              <Link href="https://v1.uniswap.info" target="_blank">
-                V1 Analytics
-              </Link>
-            </HeaderText> */}
-            {/* <HeaderText>
-              <Link href="https://uniswap.org/docs/v2" target="_blank">
-                Docs
-              </Link>
+              <ButtonLink href="https://luaswap.org/#/" target="_blank">
+                Farm
+              </ButtonLink>
             </HeaderText>
             <HeaderText>
-              <Link href="https://discord.com/invite/XErMcTq" target="_blank">
-                Discord
-              </Link>
-            </HeaderText> */}
+              <ButtonLink href="https://app.luaswap.org/#/swap" target="_blank">
+                Swap
+              </ButtonLink>
+            </HeaderText>
             <HeaderText>
               <Link href="https://twitter.com/LuaSwap" target="_blank">
                 Twitter
