@@ -233,6 +233,11 @@ function SideNav({ history }) {
               </ButtonLink>
             </HeaderText>
             <HeaderText>
+              <Link href="https://board.luaswap.org/homepage" target="_blank">
+                board.luaswap.org
+              </Link>
+            </HeaderText>
+            <HeaderText>
               <Link href="https://twitter.com/LuaSwap" target="_blank">
                 Twitter
               </Link>
