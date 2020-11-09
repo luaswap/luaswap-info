@@ -9,6 +9,7 @@ import { RowFixed } from '../Row'
 import { OptionButton } from '../ButtonStyled'
 import { getTimeframe } from '../../utils'
 import { TYPE } from '../../Theme'
+import Loader from '../LocalLoader'
 
 const CHART_VIEW = {
   VOLUME: 'Volume',
@@ -84,29 +85,37 @@ const GlobalChart = ({ display }) => {
 
       {chartDataFiltered && chartView === CHART_VIEW.LIQUIDITY && (
         <ResponsiveContainer aspect={60 / 28} ref={ref}>
-          <TradingViewChart
-            data={dailyData}
-            base={totalLiquidityUSD}
-            baseChange={liquidityChangeUSD}
-            title="Liquidity"
-            field="totalLiquidityUSD"
-            width={width}
-            type={CHART_TYPES.AREA}
-          />
+          {dailyData && totalLiquidityUSD ? (
+            <TradingViewChart
+              data={dailyData}
+              base={totalLiquidityUSD}
+              baseChange={liquidityChangeUSD}
+              title="Liquidity"
+              field="totalLiquidityUSD"
+              width={width}
+              type={CHART_TYPES.AREA}
+            />
+          ) : (
+            <Loader />
+          )}
         </ResponsiveContainer>
       )}
       {chartDataFiltered && chartView === CHART_VIEW.VOLUME && (
         <ResponsiveContainer aspect={60 / 28}>
-          <TradingViewChart
-            data={chartDataFiltered}
-            base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume : oneDayVolumeUSD}
-            baseChange={volumeWindow === VOLUME_WINDOW.WEEKLY ? weeklyVolumeChange : volumeChangeUSD}
-            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'Volume (7d)' : 'Volume'}
-            field={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'weeklyVolumeUSD' : 'dailyVolumeUSD'}
-            width={width}
-            type={CHART_TYPES.BAR}
-            useWeekly={volumeWindow === VOLUME_WINDOW.WEEKLY}
-          />
+          {chartDataFiltered && oneWeekVolume && oneDayVolumeUSD ? (
+            <TradingViewChart
+              data={chartDataFiltered}
+              base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume : oneDayVolumeUSD}
+              baseChange={volumeWindow === VOLUME_WINDOW.WEEKLY ? weeklyVolumeChange : volumeChangeUSD}
+              title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'Volume (7d)' : 'Volume'}
+              field={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'weeklyVolumeUSD' : 'dailyVolumeUSD'}
+              width={width}
+              type={CHART_TYPES.BAR}
+              useWeekly={volumeWindow === VOLUME_WINDOW.WEEKLY}
+            />
+          ) : (
+            <Loader />
+          )}
         </ResponsiveContainer>
       )}
       {display === 'volume' && (

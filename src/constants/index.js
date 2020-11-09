@@ -13,7 +13,8 @@ export const timeframeOptions = {
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
   'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
-  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json'
+  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
+  'https://raw.githubusercontent.com/tomochain/luaswap-token-list/17f9db1df3ec79aa2372f66b4c794d41710bb55b/build/luaswap-default.tokenlist.json'
 ]
 
 // hide from overview list

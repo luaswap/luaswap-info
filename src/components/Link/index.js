@@ -26,6 +26,16 @@ const Link = styled(WrappedLink)`
 
 export default Link
 
+export const ButtonLink = styled(RebassLink)`
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #fabb46;
+  color: #231d1a !important;
+`
+
 export const CustomLink = styled(RouterLink)`
   text-decoration: none;
   font-size: 14px;

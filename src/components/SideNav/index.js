@@ -8,7 +8,7 @@ import { transparentize } from 'polished'
 import { TYPE } from '../../Theme'
 import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
-import Link from '../Link'
+import Link, { ButtonLink } from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
@@ -120,12 +120,15 @@ const MenuMobileWrapper = styled.div`
   display: ${props => props.hide && 'none'};
 `
 
-function MenuContent({ history }) {
+function MenuContent({ history, toggleMenu }) {
   return (
     <>
       <AutoColumn gap="1.25rem" style={{ marginTop: '1rem' }}>
         <BasicLink to="/home">
-          <Option activeText={history.location.pathname === '/home' ?? undefined}>
+          <Option
+            activeText={history.location.pathname === '/home' ?? undefined}
+            onClick={toggleMenu ? () => toggleMenu(false) : null}
+          >
             <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
             Overview
           </Option>
@@ -137,6 +140,7 @@ function MenuContent({ history }) {
                 history.location.pathname.split('/')[1] === 'token') ??
               undefined
             }
+            onClick={toggleMenu ? () => toggleMenu(false) : null}
           >
             <Disc size={20} style={{ marginRight: '.75rem' }} />
             Tokens
@@ -149,6 +153,7 @@ function MenuContent({ history }) {
                 history.location.pathname.split('/')[1] === 'pair') ??
               undefined
             }
+            onClick={toggleMenu ? () => toggleMenu(false) : null}
           >
             <PieChart size={20} style={{ marginRight: '.75rem' }} />
             Pairs
@@ -162,6 +167,7 @@ function MenuContent({ history }) {
                 history.location.pathname.split('/')[1] === 'account') ??
               undefined
             }
+            onClick={toggleMenu ? () => toggleMenu(false) : null}
           >
             <List size={20} style={{ marginRight: '.75rem' }} />
             Accounts
@@ -217,25 +223,20 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://luaswap.org" target="_blank">
-                LuaSwap.org
-              </Link>
-            </HeaderText>
-            {/* <HeaderText>
-              <Link href="https://v1.uniswap.info" target="_blank">
-                V1 Analytics
-              </Link>
-            </HeaderText> */}
-            {/* <HeaderText>
-              <Link href="https://uniswap.org/docs/v2" target="_blank">
-                Docs
-              </Link>
+              <ButtonLink href="https://luaswap.org/#/" target="_blank">
+                Farm
+              </ButtonLink>
             </HeaderText>
             <HeaderText>
-              <Link href="https://discord.com/invite/XErMcTq" target="_blank">
-                Discord
+              <ButtonLink href="https://app.luaswap.org/#/swap" target="_blank">
+                Swap
+              </ButtonLink>
+            </HeaderText>
+            <HeaderText>
+              <Link href="https://board.luaswap.org/homepage" target="_blank">
+                board.luaswap.org
               </Link>
-            </HeaderText> */}
+            </HeaderText>
             <HeaderText>
               <Link href="https://twitter.com/LuaSwap" target="_blank">
                 Twitter
@@ -265,7 +266,7 @@ function SideNav({ history }) {
           />
           <MenuMobileWrapper hide={!showMobileMenu} ref={MenuMobileWrapperRef}>
             <AutoColumn gap="1.25rem">
-              <MenuContent history={history} />
+              <MenuContent history={history} toggleMenu={toggleMobileMenu} />
             </AutoColumn>
           </MenuMobileWrapper>
         </MobileWrapper>
