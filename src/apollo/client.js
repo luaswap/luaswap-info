@@ -4,7 +4,7 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/phucngh/luaswap'
+    uri: 'https://api.luaswap.org/subgraphs/name/phucngh/Luaswap'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -12,7 +12,7 @@ export const client = new ApolloClient({
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/index-node/graphql'
+    uri: 'https://api.luaswap.org/index-node/graphql'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -20,7 +20,7 @@ export const healthClient = new ApolloClient({
 
 export const v1Client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap'
+    uri: 'https://api.luaswap.org/subgraphs/name/phucngh/Luaswap'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -28,7 +28,7 @@ export const v1Client = new ApolloClient({
 
 export const blockClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'
+    uri: 'https://api.luaswap.org/subgraphs/name/phucngh/ethereum-blocks'
   }),
   cache: new InMemoryCache()
 })

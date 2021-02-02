@@ -8,9 +8,9 @@ import copy from 'copy-to-clipboard'
 export function useColor(tokenAddress, token) {
   const [color, setColor] = useState('#2172E5')
   if (tokenAddress) {
-    const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+    const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/2a397bbb9f56a376025942f5f54bfd79d87a690b/src/tokens/icons/tomochain/${isAddress(
       tokenAddress
-    )}/logo.png`
+    )}.png`
     if (path) {
       Vibrant.from(path).getPalette((err, palette) => {
         if (palette && palette.Vibrant) {

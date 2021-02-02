@@ -463,8 +463,8 @@ function PairPage({ pairAddress, history }) {
                     </AutoRow>
                   </Column>
                   <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={'https://etherscan.io/address/' + pairAddress}>
-                      View on Etherscan ↗
+                    <Link color={backgroundColor} external href={'https://scan.tomochain.com/address/' + pairAddress}>
+                      View on Tomoscan ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>

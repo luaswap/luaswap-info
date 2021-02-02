@@ -55,7 +55,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     address = '0xc011a72400e58ecd99ee497cf89e3775d4bd732f'
   }
 
-  if (address?.toLowerCase() === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') {
+  if (address?.toLowerCase() === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
     return (
       <StyledEthereumLogo size={size} {...rest}>
         <img
@@ -67,9 +67,9 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+  const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/2a397bbb9f56a376025942f5f54bfd79d87a690b/src/tokens/icons/tomochain/${isAddress(
     address
-  )}/logo.png`
+  )}.png`
 
   return (
     <Inline>

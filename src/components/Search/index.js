@@ -459,11 +459,11 @@ export const Search = ({ small = false }) => {
           )}
           {filteredPairList &&
             filteredPairList.slice(0, pairsShown).map(pair => {
-              if (pair?.token0?.id === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') {
+              if (pair?.token0?.id.toLowerCase() === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
                 pair.token0.name = 'ETH (Wrapped)'
                 pair.token0.symbol = 'ETH'
               }
-              if (pair?.token1.id === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2') {
+              if (pair?.token1.id.toLowerCase() === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
                 pair.token1.name = 'ETH (Wrapped)'
                 pair.token1.symbol = 'ETH'
               }
