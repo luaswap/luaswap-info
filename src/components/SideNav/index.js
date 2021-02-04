@@ -233,21 +233,21 @@ function SideNav({ history }) {
             {!below1080 && <MenuContent history={history} />}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
-            {/* <HeaderText>
+            <HeaderText>
               <ButtonLink href="https://luaswap.org/#/" target="_blank">
                 Farm
               </ButtonLink>
-            </HeaderText> */}
+            </HeaderText>
             <HeaderText>
               <ButtonLink href="https://app.luaswap.org/#/swap" target="_blank">
                 Swap
               </ButtonLink>
             </HeaderText>
-            {/* <HeaderText>
+            <HeaderText>
               <Link href="https://board.luaswap.org/homepage" target="_blank">
                 board.luaswap.org
               </Link>
-            </HeaderText> */}
+            </HeaderText>
             <HeaderText>
               <Link href="https://twitter.com/LuaSwap" target="_blank">
                 Twitter
