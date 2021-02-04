@@ -120,6 +120,16 @@ const MenuMobileWrapper = styled.div`
   display: ${props => props.hide && 'none'};
 `
 
+const NetworkLabel = styled.div`
+  margin: 0px;
+  width: fit-content;
+  background-color: rgba(243, 132, 30, 0.05);
+  color: #f3841e;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 8px 12px;
+`
+
 function MenuContent({ history, toggleMenu }) {
   return (
     <>
@@ -219,24 +229,25 @@ function SideNav({ history }) {
         <DesktopWrapper>
           <AutoColumn gap="1rem" style={{ marginLeft: '.75rem', marginTop: '1.5rem' }}>
             <Title />
+            <NetworkLabel>{'Ethereum'}</NetworkLabel>
             {!below1080 && <MenuContent history={history} />}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
-            <HeaderText>
+            {/* <HeaderText>
               <ButtonLink href="https://luaswap.org/#/" target="_blank">
                 Farm
               </ButtonLink>
-            </HeaderText>
+            </HeaderText> */}
             <HeaderText>
               <ButtonLink href="https://app.luaswap.org/#/swap" target="_blank">
                 Swap
               </ButtonLink>
             </HeaderText>
-            <HeaderText>
+            {/* <HeaderText>
               <Link href="https://board.luaswap.org/homepage" target="_blank">
                 board.luaswap.org
               </Link>
-            </HeaderText>
+            </HeaderText> */}
             <HeaderText>
               <Link href="https://twitter.com/LuaSwap" target="_blank">
                 Twitter
