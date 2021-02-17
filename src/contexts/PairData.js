@@ -285,12 +285,20 @@ function parseData(data, oneDayData, twoDayData, oneWeekData, ethPrice, oneDayBl
     data.oneWeekVolumeUSD = parseFloat(data.volumeUSD)
   }
   if (data?.token0?.id === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
-    data.token0.name = 'Ether (Wrapped)'
+    data.token0.name = 'Ether'
     data.token0.symbol = 'ETH'
   }
+  if (data?.token0?.id === '0xb1f66997a5760428d3a87d68b90bfe0ae64121cc') {
+    data.token0.name = 'TomoChain'
+    data.token0.symbol = 'TOMO'
+  }
   if (data?.token1?.id === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
-    data.token1.name = 'Ether (Wrapped)'
+    data.token1.name = 'Ether'
     data.token1.symbol = 'ETH'
+  }
+  if (data?.token1?.id === '0xb1f66997a5760428d3a87d68b90bfe0ae64121cc') {
+    data.token1.name = 'TomoChain'
+    data.token1.symbol = 'TOMO'
   }
   return data
 }

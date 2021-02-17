@@ -146,8 +146,14 @@ const TXN_TYPE = {
 const ITEMS_PER_PAGE = 10
 
 function getTransactionType(event, symbol0, symbol1) {
-  const formattedS0 = symbol0?.length > 8 ? symbol0.slice(0, 7) + '...' : symbol0
-  const formattedS1 = symbol1?.length > 8 ? symbol1.slice(0, 7) + '...' : symbol1
+  let formattedS0 = symbol0?.length > 8 ? symbol0.slice(0, 7) + '...' : symbol0
+  let formattedS1 = symbol1?.length > 8 ? symbol1.slice(0, 7) + '...' : symbol1
+  if('WTOMO' === formattedS0) {
+    formattedS0 = 'TOMO'
+  }
+  if('WTOMO' === formattedS1) {
+    formattedS1 = 'TOMO'
+  }
   switch (event) {
     case TXN_TYPE.ADD:
       return 'Add ' + formattedS0 + ' and ' + formattedS1
