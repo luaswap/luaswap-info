@@ -33,9 +33,12 @@ const OptionsRow = styled.div`
 
 const CHART_VIEW = {
   VOLUME: 'Volume',
-  LIQUIDITY: 'Liquidity',
-  RATE0: 'Rate 0',
-  RATE1: 'Rate 1'
+  LIQUIDITY: 'Liquidity'
+  // TODO: Hidden price pair
+  // ,
+  // RATE0: 'Rate 0',
+  // RATE1: 'Rate 1'
+  // TODO: END
 }
 
 const PairChart = ({ address, color, base0, base1 }) => {
@@ -66,9 +69,11 @@ const PairChart = ({ address, color, base0, base1 }) => {
   // get data for pair, and rates
   const pairData = usePairData(address)
   let chartData = usePairChartData(address)
-  const hourlyData = useHourlyRateData(address, timeWindow)
-  const hourlyRate0 = hourlyData && hourlyData[0]
-  const hourlyRate1 = hourlyData && hourlyData[1]
+  // TODO: Hidden price pair
+  // const hourlyData = useHourlyRateData(address, timeWindow)
+  // const hourlyRate0 = hourlyData && hourlyData[0]
+  // const hourlyRate1 = hourlyData && hourlyData[1]
+  // TODO: END
 
   // formatted symbols for overflow
   const formattedSymbol0 =
@@ -141,7 +146,8 @@ const PairChart = ({ address, color, base0, base1 }) => {
             >
               Volume
             </OptionButton>
-            <OptionButton
+            {/* TODO: Hidden price pair */}
+            {/* <OptionButton
               active={chartFilter === CHART_VIEW.RATE0}
               onClick={() => {
                 setTimeWindow(timeframeOptions.WEEK)
@@ -158,7 +164,8 @@ const PairChart = ({ address, color, base0, base1 }) => {
               }}
             >
               {pairData.token0 ? formattedSymbol0 + '/' + formattedSymbol1 : '-'}
-            </OptionButton>
+            </OptionButton> */}
+            {/* TODO: END */}
           </AutoRow>
           <AutoRow justify="flex-end" gap="6px">
             <OptionButton
@@ -242,7 +249,8 @@ const PairChart = ({ address, color, base0, base1 }) => {
         </ResponsiveContainer>
       )}
 
-      {chartFilter === CHART_VIEW.RATE1 &&
+      {/* TODO: Hidden price pair */}
+      {/* {chartFilter === CHART_VIEW.RATE1 &&
         (hourlyRate1 ? (
           <ResponsiveContainer aspect={aspect} ref={ref}>
             <CandleStickChart
@@ -270,7 +278,8 @@ const PairChart = ({ address, color, base0, base1 }) => {
           </ResponsiveContainer>
         ) : (
           <LocalLoader />
-        ))}
+        ))} */}
+        {/* TODO: END */}
 
       {chartFilter === CHART_VIEW.VOLUME && (
         <ResponsiveContainer aspect={aspect}>

@@ -32,7 +32,9 @@ const PriceOption = styled(OptionButton)`
 const CHART_VIEW = {
   VOLUME: 'Volume',
   LIQUIDITY: 'Liquidity',
-  PRICE: 'Price',
+  // TODO: Hidden price
+  // PRICE: 'Price',
+  // TODO: END
   LINE_PRICE: 'Price (Line)'
 }
 
@@ -44,7 +46,7 @@ const DATA_FREQUENCY = {
 
 const TokenChart = ({ address, color, base }) => {
   // settings for the window and candle width
-  const [chartFilter, setChartFilter] = useState(CHART_VIEW.PRICE)
+  const [chartFilter, setChartFilter] = useState(CHART_VIEW.LIQUIDITY)
   const [frequency, setFrequency] = useState(DATA_FREQUENCY.HOUR)
 
   const [darkMode] = useDarkModeManager()
@@ -64,28 +66,30 @@ const TokenChart = ({ address, color, base }) => {
   const prevWindow = usePrevious(timeWindow)
 
   // hourly and daily price data based on the current time window
-  const hourlyWeek = useTokenPriceData(address, timeframeOptions.WEEK, 3600)
-  const hourlyMonth = useTokenPriceData(address, timeframeOptions.MONTH, 3600)
-  const hourlyAll = useTokenPriceData(address, timeframeOptions.ALL_TIME, 3600)
-  const dailyWeek = useTokenPriceData(address, timeframeOptions.WEEK, 86400)
-  const dailyMonth = useTokenPriceData(address, timeframeOptions.MONTH, 86400)
-  const dailyAll = useTokenPriceData(address, timeframeOptions.ALL_TIME, 86400)
+  // TODO: Hidden price
+  // const hourlyWeek = useTokenPriceData(address, timeframeOptions.WEEK, 3600)
+  // const hourlyMonth = useTokenPriceData(address, timeframeOptions.MONTH, 3600)
+  // const hourlyAll = useTokenPriceData(address, timeframeOptions.ALL_TIME, 3600)
+  // const dailyWeek = useTokenPriceData(address, timeframeOptions.WEEK, 86400)
+  // const dailyMonth = useTokenPriceData(address, timeframeOptions.MONTH, 86400)
+  // const dailyAll = useTokenPriceData(address, timeframeOptions.ALL_TIME, 86400)
 
-  const priceData =
-    timeWindow === timeframeOptions.MONTH
-      ? // monthly selected
-        frequency === DATA_FREQUENCY.DAY
-        ? dailyMonth
-        : hourlyMonth
-      : // weekly selected
-      timeWindow === timeframeOptions.WEEK
-      ? frequency === DATA_FREQUENCY.DAY
-        ? dailyWeek
-        : hourlyWeek
-      : // all time selected
-      frequency === DATA_FREQUENCY.DAY
-      ? dailyAll
-      : hourlyAll
+  // const priceData =
+  //   timeWindow === timeframeOptions.MONTH
+  //     ? // monthly selected
+  //       frequency === DATA_FREQUENCY.DAY
+  //       ? dailyMonth
+  //       : hourlyMonth
+  //     : // weekly selected
+  //     timeWindow === timeframeOptions.WEEK
+  //     ? frequency === DATA_FREQUENCY.DAY
+  //       ? dailyWeek
+  //       : hourlyWeek
+  //     : // all time selected
+  //     frequency === DATA_FREQUENCY.DAY
+  //     ? dailyAll
+  //     : hourlyAll
+  // TODO: End
 
   // switch to hourly data when switched to week window
   useEffect(() => {
@@ -162,16 +166,19 @@ const TokenChart = ({ address, color, base }) => {
               >
                 Volume
               </OptionButton>
-              <OptionButton
+              {/* TODO: Hidden price */}
+              {/* <OptionButton
                 active={chartFilter === CHART_VIEW.PRICE}
                 onClick={() => {
                   setChartFilter(CHART_VIEW.PRICE)
                 }}
               >
                 Price
-              </OptionButton>
+              </OptionButton> */}
+              {/* TODO: END */}
             </RowFixed>
-            {chartFilter === CHART_VIEW.PRICE && (
+            {/* TODO: Hidden price */}
+            {/* {chartFilter === CHART_VIEW.PRICE && (
               <AutoRow gap="4px">
                 <PriceOption
                   active={frequency === DATA_FREQUENCY.DAY}
@@ -195,7 +202,8 @@ const TokenChart = ({ address, color, base }) => {
                   <Activity size={14} />
                 </PriceOption>
               </AutoRow>
-            )}
+            )} */}
+            {/* TODO: END */}
           </AutoColumn>
           <AutoRow justify="flex-end" gap="6px" align="flex-start">
             <OptionButton
@@ -279,7 +287,8 @@ const TokenChart = ({ address, color, base }) => {
           </AreaChart>
         </ResponsiveContainer>
       )}
-      {chartFilter === CHART_VIEW.PRICE &&
+      {/* TODO: Hidden price */}
+      {/* {chartFilter === CHART_VIEW.PRICE &&
         (frequency === DATA_FREQUENCY.LINE ? (
           <ResponsiveContainer aspect={below1080 ? 60 / 32 : 60 / 16}>
             <AreaChart margin={{ top: 0, right: 10, bottom: 6, left: 0 }} barCategoryGap={1} data={chartData}>
@@ -345,7 +354,8 @@ const TokenChart = ({ address, color, base }) => {
           </ResponsiveContainer>
         ) : (
           <LocalLoader />
-        ))}
+        ))} */}
+        {/* TODO: END */}
 
       {chartFilter === CHART_VIEW.VOLUME && (
         <ResponsiveContainer aspect={aspect}>
