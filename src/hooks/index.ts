@@ -8,7 +8,7 @@ import copy from 'copy-to-clipboard'
 export function useColor(tokenAddress, token) {
   const [color, setColor] = useState('#2172E5')
   if (tokenAddress) {
-    const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/7b3a68fdd3dbf7536795d030e695403950959a3a/src/tokens/icons/tomochain/${isAddress(
+    const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/b31403d6ef2e5350a493b5df99486a2ad4c91401/src/tokens/icons/tomochain/${isAddress(
       tokenAddress
     )}.png`
     if (path) {
