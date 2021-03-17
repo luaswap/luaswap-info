@@ -413,8 +413,12 @@ const getTokenData = async (address, ethPrice, ethPriceOld) => {
 
     // fix for WETH
     if (data.id === '0x2eaa73bd0db20c64f53febea7b5f5e5bccc7fb8b') {
-      data.name = 'ETH (Wrapped)'
+      data.name = 'Ether'
       data.symbol = 'ETH'
+    }
+    if (data.id === '0xb1f66997a5760428d3a87d68b90bfe0ae64121cc') {
+      data.name = 'TomoChain'
+      data.symbol = 'TOMO'
     }
   } catch (e) {
     console.log(e)
