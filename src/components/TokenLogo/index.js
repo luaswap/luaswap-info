@@ -67,7 +67,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/b31403d6ef2e5350a493b5df99486a2ad4c91401/src/tokens/icons/tomochain/${isAddress(
+  const path = `https://raw.githubusercontent.com/tomochain/luaswap-token-list/a857d61408a144a8a660e266ab5b517d29a08e7e/src/tokens/icons/tomochain/${isAddress(
     address
   )}.png`
 
