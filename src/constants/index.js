@@ -14,7 +14,7 @@ export const timeframeOptions = {
 export const SUPPORTED_LIST_URLS__NO_ENS = [
   'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
   'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
-  'https://raw.githubusercontent.com/tomochain/luaswap-token-list/aa7a272540067516aeef84adbce9547dbcd68fa0/build/luaswap-default.tokenlist.json'
+  'https://raw.githubusercontent.com/tomochain/luaswap-token-list/c2d9d604755b8274a827309798cc834c117ac5c4/build/luaswap-default.tokenlist.json'
 ]
 
 // hide from overview list
