@@ -3,6 +3,7 @@ import { client } from '../apollo/client'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useTimeframe } from './Application'
+import { timeframeOptions } from '../constants'
 import {
   getPercentChange,
   getBlockFromTimestamp,
@@ -561,7 +562,8 @@ export function useGlobalData() {
 export function useGlobalChartData() {
   const [state, { updateChart }] = useGlobalDataContext()
   const [oldestDateFetch, setOldestDateFetched] = useState()
-  const [activeWindow] = useTimeframe()
+  // const [activeWindow] = useTimeframe()
+  const activeWindow = timeframeOptions.MONTH
 
   const chartDataDaily = state?.chartData?.daily
   const chartDataWeekly = state?.chartData?.weekly
