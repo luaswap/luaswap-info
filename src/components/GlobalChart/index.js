@@ -25,7 +25,7 @@ const GlobalChart = ({ display }) => {
   const [chartView, setChartView] = useState(display === 'volume' ? CHART_VIEW.VOLUME : CHART_VIEW.LIQUIDITY)
 
   // time window and window size for chart
-  const timeWindow = timeframeOptions.WEEK
+  const timeWindow = timeframeOptions.MONTH
   const [volumeWindow, setVolumeWindow] = useState(VOLUME_WINDOW.DAYS)
 
   // global historical data
