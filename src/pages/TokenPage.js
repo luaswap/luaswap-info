@@ -188,7 +188,7 @@ function TokenPage({ address, history }) {
               style={{ width: 'fit-content' }}
               color={backgroundColor}
               external
-              href={'https://scan.tomochain.com/address/' + address}
+              href={'https://tomoscan.io/address/' + address}
             >
               <Text style={{ marginLeft: '.15rem' }} fontSize={'14px'} fontWeight={400}>
                 ({address.slice(0, 8) + '...' + address.slice(36, 42)})
@@ -373,7 +373,7 @@ function TokenPage({ address, history }) {
                     </AutoRow>
                   </Column>
                   <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={'https://scan.tomochain.com/address/' + address}>
+                    <Link color={backgroundColor} external href={'https://tomoscan.io/address/' + address}>
                       View on Tomoscan ↗
                     </Link>
                   </ButtonLight>

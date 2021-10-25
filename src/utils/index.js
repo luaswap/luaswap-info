@@ -306,10 +306,10 @@ export const setThemeColor = theme => document.documentElement.style.setProperty
 export const Big = number => new BigNumber(number)
 
 export const urls = {
-  showTransaction: tx => `https://scan.tomochain.com/txs/${tx}/`,
-  showAddress: address => `https://scan.tomochain.com/address/${address}/`,
-  showToken: address => `https://scan.tomochain.com/tokens/${address}/`,
-  showBlock: block => `https://scan.tomochain.com/blocks/${block}/`
+  showTransaction: tx => `https://tomoscan.io/tx/${tx}/`,
+  showAddress: address => `https://tomoscan.io/address/${address}/`,
+  showToken: address => `https://tomoscan.io/token/${address}/`,
+  showBlock: block => `https://tomoscan.io/block/${block}/`
 }
 
 export const formatTime = unix => {
