@@ -4,7 +4,7 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.luaswap.org/subgraphs/name/phucngh/Luaswap'
+    uri: 'https://api.luaswap.org/subgraphs/name/phucngh/Luaswap3'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
