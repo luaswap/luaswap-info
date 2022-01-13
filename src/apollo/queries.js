@@ -3,7 +3,7 @@ import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
 export const SUBGRAPH_HEALTH = gql`
   query health {
-    indexingStatusForCurrentVersion(subgraphName: "phucngh/Luaswap") {
+    indexingStatusForCurrentVersion(subgraphName: "phucngh/Luaswap3") {
       synced
       health
       chains {
@@ -64,17 +64,16 @@ export const GET_BLOCK = gql`
 export const GET_BLOCKS = timestamps => {
   // queryString += timestamps.map(timestamp => {
   //   return `t${timestamp}:blocks(first: 1, orderBy: timestamp, orderDirection: desc
-  //     , where: { timestamp_gt: ${timestamp}, timestamp_lt: ${timestamp +600} 
+  //     , where: { timestamp_gt: ${timestamp}, timestamp_lt: ${timestamp +600}
   //   }) {
   //     number
   //   }`
-    
+
   // })
   let queryString = 'query blocks {'
-  queryString += timestamps.map((timestamp) => {
-    return `t${timestamp}:blocks(first: 1, orderBy: timestamp, orderDirection: desc, where: { timestamp_gt: ${timestamp}, timestamp_lt: ${
-      timestamp + 600
-    } }) {
+  queryString += timestamps.map(timestamp => {
+    return `t${timestamp}:blocks(first: 1, orderBy: timestamp, orderDirection: desc, where: { timestamp_gt: ${timestamp}, timestamp_lt: ${timestamp +
+      600} }) {
       number
     }`
   })
