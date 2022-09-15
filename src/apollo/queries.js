@@ -1,19 +1,50 @@
 import gql from 'graphql-tag'
 import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
+// // Hosted services subgraph
+// export const SUBGRAPH_HEALTH = gql`
+//   query health {
+//     indexingStatusForCurrentVersion(subgraphName: "phucngh/luaswap") {
+//       synced
+//       health
+//       chains {
+//         chainHeadBlock {
+//           number
+//         }
+//         latestBlock {
+//           number
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const SUBGRAPH_HEALTH = gql`
-  query health {
-    indexingStatusForCurrentVersion(subgraphName: "phucngh/luaswap") {
-      synced
+  query indexingStatuses($deploymentIDs: [String!]!) {
+    indexingStatuses(subgraphs: $deploymentIDs) {
+      subgraph
       health
+      synced
       chains {
-        chainHeadBlock {
-          number
+        network
+        ... on EthereumIndexingStatus {
+          earliestBlock {
+            number
+            __typename
+          }
+          latestBlock {
+            number
+            __typename
+          }
+          chainHeadBlock {
+            number
+            __typename
+          }
+          __typename
         }
-        latestBlock {
-          number
-        }
+        __typename
       }
+      __typename
     }
   }
 `

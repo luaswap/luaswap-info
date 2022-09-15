@@ -168,9 +168,13 @@ export function useLatestBlock() {
     async function fetch() {
       try {
         const res = await healthClient.query({
+          // query: SUBGRAPH_HEALTH // Hosted services subgraph
+          operationName: 'indexingStatuses',
+          variables: { deploymentIDs: ['QmUEHess6r1D6a6SqLyccTDpdWaMjdJ4dQPavCRzqNkHfe'] },
           query: SUBGRAPH_HEALTH
         })
-        const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
+        // const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number // Hosted services subgraph
+        const block = res.data.indexingStatuses[0].chains[0].latestBlock.number
         if (block) {
           updateLatestBlock(block)
         }
