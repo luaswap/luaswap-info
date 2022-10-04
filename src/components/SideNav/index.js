@@ -7,7 +7,7 @@ import { useMedia } from 'react-use'
 import { transparentize } from 'polished'
 import { TYPE } from '../../Theme'
 import { withRouter } from 'react-router-dom'
-import { TrendingUp, List, PieChart, Disc } from 'react-feather'
+import { TrendingUp, List, PieChart, Disc, ExternalLink } from 'react-feather'
 import Link, { ButtonLink } from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
@@ -183,6 +183,15 @@ function MenuContent({ history, toggleMenu }) {
             Accounts
           </Option>
         </BasicLink>
+
+        <a href="https://www.geckoterminal.com/tomochain/luaswap/pools" target='_blank' rel="noopener noreferrer">
+          <Option
+            onClick={toggleMenu ? () => toggleMenu(false) : null}
+          >
+            <ExternalLink size={20} style={{ marginRight: '.75rem' }} />
+            GeckoTerminal
+          </Option>
+        </a>
       </AutoColumn>
     </>
   )
