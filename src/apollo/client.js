@@ -16,7 +16,7 @@ export const client = new ApolloClient({
 export const healthClient = new ApolloClient({
   link: new HttpLink({
     // uri: 'https://api.thegraph.com/index-node/graphql' // Hosted services subgraph
-    uri: 'https://graph-indexer.prod-us-west-2.staked.cloud/status'
+    uri: 'https://mainnet-indexer-05-eu-central.thegraph.com/status'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
